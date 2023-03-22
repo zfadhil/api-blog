@@ -17,7 +17,7 @@ class FeedController extends Controller
     }
 
     public function show($id){
-        $post = Feed::findOrFail($id);
+        $post = Feed::with('writer:id,username')->findOrFail($id);
         return new FeedDetailResource($post);
     }
 }
