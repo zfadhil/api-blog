@@ -24,3 +24,4 @@ Route::get('/feeds', [FeedController::class, 'index'])->middleware(['auth:sanctu
 Route::get('/feeds/{id}', [FeedController::class, 'show'])->middleware(['auth:sanctum']);
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
