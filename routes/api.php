@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/feeds', [FeedController::class, 'index']);
+Route::get('/feeds/{id}', [FeedController::class, 'show']);
