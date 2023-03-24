@@ -25,3 +25,4 @@ Route::get('/feeds/{id}', [FeedController::class, 'show'])->middleware(['auth:sa
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
