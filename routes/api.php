@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/feeds', [FeedController::class, 'index'])->middleware(['auth:sanctum']);
 Route::get('/feeds/{id}', [FeedController::class, 'show'])->middleware(['auth:sanctum']);
 
+Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');
