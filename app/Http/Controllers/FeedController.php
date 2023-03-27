@@ -6,6 +6,7 @@ use App\Models\Feed;
 use App\Http\Resources\FeedResource;
 use App\Http\Resources\FeedDetailResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeedController extends Controller
 {
@@ -19,5 +20,19 @@ class FeedController extends Controller
     public function show($id){
         $post = Feed::with('writer:id,username')->findOrFail($id);
         return new FeedDetailResource($post);
+    }
+
+    public function store(Request $request){
+        $request -> validate([
+            'title' => 'required|max:255',
+            'feeds_content' => 'required',
+        ]);
+
+        // return response()->json('sudah dapat digunakan');
+        $request['author'] = Auth::user()->id;
+
+        $post = Feed::create($request->all());
+        return new FeedDetailResource($post->loadMissing('writer:id,username'));
+
     }
 }
