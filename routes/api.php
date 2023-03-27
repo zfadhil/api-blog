@@ -20,7 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/feeds', [FeedController::class, 'index']);
     Route::get('/feeds/{id}', [FeedController::class, 'show']);
     Route::post('/feeds', [FeedController::class, 'store']);
-    Route::patch('/feeds/{id}', [FeedController::class, 'update']);
+    Route::patch('/feeds/{id}', [FeedController::class, 'update'])->middleware(['feed.owner']);
     
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
