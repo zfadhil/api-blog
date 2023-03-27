@@ -42,7 +42,11 @@ class FeedController extends Controller
             'feeds_content' => 'required',
         ]);
 
-        return response()->json('sudah dapat digunakan');
+        $post = Feed::findOrFail($id);
+        $post->update($request->all());
+
+        // return response()->json('sudah dapat digunakan');
+        return new FeedDetailResource($post->loadMissing('writer:id,username'));
 
     }
 }
