@@ -49,4 +49,13 @@ class FeedController extends Controller
         return new FeedDetailResource($post->loadMissing('writer:id,username'));
 
     }
+
+    public function delete($id){
+        $post = Feed::findOrFail($id);
+        $post->delete();
+
+        return response()->json([
+            'message' => "data successfully deleted"
+        ]);
+    }
 }

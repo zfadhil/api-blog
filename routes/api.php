@@ -21,6 +21,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::get('/feeds/{id}', [FeedController::class, 'show']);
     Route::post('/feeds', [FeedController::class, 'store']);
     Route::patch('/feeds/{id}', [FeedController::class, 'update'])->middleware(['feed.owner']);
+    Route::delete('/feeds/{id}', [FeedController::class, 'delete'])->middleware(['feed.owner']);
     
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
