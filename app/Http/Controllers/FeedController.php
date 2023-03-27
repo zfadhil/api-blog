@@ -35,4 +35,14 @@ class FeedController extends Controller
         return new FeedDetailResource($post->loadMissing('writer:id,username'));
 
     }
+
+    public function update(Request $request, $id){
+        $request -> validate([
+            'title' => 'required|max:255',
+            'feeds_content' => 'required',
+        ]);
+
+        return response()->json('sudah dapat digunakan');
+
+    }
 }
