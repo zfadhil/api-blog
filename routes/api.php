@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FeedController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::post('/feeds', [FeedController::class, 'store']);
     Route::patch('/feeds/{id}', [FeedController::class, 'update'])->middleware(['feed.owner']);
     Route::delete('/feeds/{id}', [FeedController::class, 'delete'])->middleware(['feed.owner']);
+
+    Route::post('/comment', [CommentController::class, 'store']);
     
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
