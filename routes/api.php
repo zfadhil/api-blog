@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum'])->group(function (){
     Route::delete('/feeds/{id}', [FeedController::class, 'delete'])->middleware(['feed.owner']);
 
     Route::post('/comment', [CommentController::class, 'store']);
+    Route::post('/comment/{id}', [CommentController::class, 'update'])->middleware('comment.owner');
     
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
