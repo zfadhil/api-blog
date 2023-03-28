@@ -17,7 +17,7 @@ class CommentResource extends JsonResource
         // return parent::toArray($request);
         return [
             'id' => $this->id,
-            'comments_content' => $this->comment_content,
+            'comments_content' => $this->comments_content,
             'user_id' => $this->user_id,
             'commentator' => $this->whenLoaded('commentator'),
             'created_at' => date_format($this->created_at, "Y/m/d H:i:s"),
