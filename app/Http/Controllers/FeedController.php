@@ -14,11 +14,12 @@ class FeedController extends Controller
         $posts = Feed::all();
         // return response()->json($posts);
         // return response()->json(['data' => $posts]);
-        return FeedResource::collection($posts);
+        // return PostResource::collection($posts);
+        return FeedDetailResource::collection($posts->loadMissing('writer:id,username', 'comments:id,feeds_id,user_id,comments_content'));
     }
 
     public function show($id){
-        $post = Feed::with('writer:id,username')->findOrFail($id);
+        $post = Feed::with('writer:id,username', 'comments:id,feeds_id,user_id,comments_content')->findOrFail($id);
         return new FeedDetailResource($post);
     }
 
