@@ -16,6 +16,7 @@ class Feed extends Model
         'title',
         'feeds_content',
         'author',
+        'image'
     ];
 
     public function writer(): BelongsTo
